@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world-enclave
+  #annotations:
+  #  seccomp.security.alpha.kubernetes.io/pod: unconfined
+spec:
+  containers:
+    - name: nitro-cli
+      image: spkane/nitro-cli:latest
+      # At the moment this is here, so one can exec into
+      # the container and just try "run.sh"
+      command: ["/enclave/sleep.sh"]
+      imagePullPolicy: Always
+      #securityContext:
+      #  allowPrivilegeEscalation: true
+      #  privileged: true
+      #  capabilities:
+      #    add: ["SYS_ADMIN"]
+      ports:
+        # TODO: socat the enclave console to some port
+        - name: console
+          containerPort: 80
+          protocol: TCP
+      resources:
+        limits:
+          smarter-devices/nitro_enclaves: "1"
+          cpu: 1000m
+          memory: 512Mi
+        requests:
+          smarter-devices/nitro_enclaves: "1"
+          cpu: 10m
+          memory: 50Mi
+      #volumeMounts:
+      #- name: dockersock
+      #  mountPath: "/var/run/docker.sock"
+  tolerations:
+  - effect: NoSchedule
+    operator: Exists
+  - effect: NoExecute
+    operator: Exists
+  #volumes:
+  #  - name: dockersock
+  #    hostPath:
+  #      path: /var/run/docker.sock
