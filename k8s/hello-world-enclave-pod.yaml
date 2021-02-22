@@ -6,7 +6,7 @@ spec:
   containers:
     - name: nitro-cli
       image: spkane/nitro-cli:latest
-      # At the moment this is here, so one can exec into
+      # At the moment this is here, so that one can exec into
       # the container and just try "run.sh"
       command: ["/enclave/sleep.sh"]
       imagePullPolicy: Always
@@ -20,12 +20,11 @@ spec:
           smarter-devices/nitro_enclaves: "1"
           hugepages-2Mi: 512Mi
           memory: 2Gi
+          cpu: 2000m
         requests:
           smarter-devices/nitro_enclaves: "1"
           hugepages-2Mi: 512Mi
       volumeMounts:
-      - name: dockersock
-        mountPath: "/var/run/docker.sock"
       - mountPath: /dev/hugepages
         name: hugepage
         readOnly: false
@@ -35,10 +34,6 @@ spec:
   - effect: NoExecute
     operator: Exists
   volumes:
-    - name: dockersock
-      hostPath:
-        path: /var/run/docker.sock
     - name: hugepage
       emptyDir:
         medium: HugePages
-
