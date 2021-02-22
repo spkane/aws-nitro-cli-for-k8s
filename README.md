@@ -9,7 +9,7 @@ docker run -ti -v /var/run/docker.sock:/var/run/docker.sock spkane/nitro-cli:lat
 
 ### On a Nitro Enclave enabled node
 
-docker run -ti -v /var/run/docker.sock:/var/run/docker.sock --device=/dev/nitro_enclaves:/dev/nitro_enclaves spkane/nitro-cli:latest /enclave/build.sh run
+docker run -ti -v /var/run/docker.sock:/var/run/docker.sock --device=/dev/nitro_enclaves:/dev/nitro_enclaves:rw spkane/nitro-cli:latest /enclave/build.sh run
 
 # Kubernetes Test
 
