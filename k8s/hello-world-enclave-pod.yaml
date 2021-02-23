@@ -20,7 +20,7 @@ spec:
           smarter-devices/nitro_enclaves: "1"
           hugepages-2Mi: 512Mi
           memory: 2Gi
-          cpu: 2000m
+          cpu: 250m
         requests:
           smarter-devices/nitro_enclaves: "1"
           hugepages-2Mi: 512Mi
