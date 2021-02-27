@@ -23,7 +23,7 @@ Install the Smarter Device Manager on the Kubernetes cluster w/ custom config an
 
 * `kubectl apply -f k8s/smarter-device-manager-ds-with-cm.yaml`
 
-* Label the enclave node (**HINT**: 'kubectl get nodes -o wide --show-labels'):
+* Label the enclave node (**HINT**: `kubectl get nodes -o wide --show-labels`):
   * `kubectl label node ${NODE_NAME} smarter-device-manager=enabled`
 
 * Try to spin up a pod that is capable of spinning up an enclave.
