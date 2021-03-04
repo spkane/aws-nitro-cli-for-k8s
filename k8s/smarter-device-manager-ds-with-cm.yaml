@@ -13,7 +13,7 @@ metadata:
 data:
   conf.yaml: |
         - devicematch: ^nitro_enclaves$
-          nummaxdevices: 5
+          nummaxdevices: 1
 ---
 apiVersion: apps/v1
 kind: DaemonSet
